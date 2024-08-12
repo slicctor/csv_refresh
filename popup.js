@@ -15,7 +15,9 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
         document.getElementById('navigateToPage').style.display = 'none';
 
         document.getElementById('downloadFiles').addEventListener('click', () => {
-            chrome.tabs.sendMessage(currentTab.id, { action: 'downloadFiles' });
+            chrome.tabs.sendMessage(currentTab.id, { action: 'downloadFiles' }, (response) => {
+                console.log(response.status);
+            });
         });
     }
 });
